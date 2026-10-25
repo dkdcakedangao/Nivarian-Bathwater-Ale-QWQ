@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 设置相关的 -->
+<LanguageData>
+  <BathwaterAle_SettingsCategory>冰龙洗澡水是霜麦酒</BathwaterAle_SettingsCategory>
+  <BathwaterAle_Basic>基础</BathwaterAle_Basic>
+  <BathwaterAle_Chance>触发概率：{0}%</BathwaterAle_Chance>
+  <BathwaterAle_ChanceTip>涅瓦莲正常泡澡结束后，发现一瓶随机酒的概率。0% 关闭，100% 必定触发。</BathwaterAle_ChanceTip>
+  <BathwaterAle_ResetDefaults>恢复全部默认设置</BathwaterAle_ResetDefaults>
+  <BathwaterAle_Discovered>{0}泡澡时，发现自己的洗澡水居然是 {1}！</BathwaterAle_Discovered>
+</LanguageData>

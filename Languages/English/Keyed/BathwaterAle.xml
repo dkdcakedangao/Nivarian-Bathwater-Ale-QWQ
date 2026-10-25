@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <BathwaterAle_SettingsCategory>Nivarian Bathwater Ale QWQ</BathwaterAle_SettingsCategory>
+  <BathwaterAle_Basic>Basic</BathwaterAle_Basic>
+  <BathwaterAle_Chance>Trigger chance: {0}%</BathwaterAle_Chance>
+  <BathwaterAle_ChanceTip>Chance to discover one random bottle of wine after a Nivarian finishes bathing. 0% disables rewards; 100% always triggers.</BathwaterAle_ChanceTip>
+  <BathwaterAle_ResetDefaults>Reset all settings to defaults</BathwaterAle_ResetDefaults>
+  <BathwaterAle_Discovered>While bathing, {0} discovered that their bathwater was actually {1}!</BathwaterAle_Discovered>
+</LanguageData>

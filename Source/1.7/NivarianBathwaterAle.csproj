@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <AssemblyName>NivarianBathwaterAle</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <GenerateDependencyFile>false</GenerateDependencyFile>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">E:/steam/steamapps/common/RimWorld</RimWorldDir>
+    <HarmonyAssemblyPath Condition="'$(HarmonyAssemblyPath)' == ''">E:/steam/steamapps/workshop/content/294100/2009463077/1.7/Assemblies/0Harmony.dll</HarmonyAssemblyPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="../Core/*.cs;../Bath/*.cs" />
+    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldDir)/Assembly-CSharp.dll" Private="false" />
+    <Reference Include="UnityStubs" HintPath="$(RimWorldDir)/UnityStubs.dll" Private="false" />
+    <Reference Include="Waylith" HintPath="$(RimWorldDir)/Waylith.dll" Private="false" />
+    <Reference Include="Waylith.UnityCompat" HintPath="$(RimWorldDir)/Waylith.UnityCompat.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(HarmonyAssemblyPath)" Private="false" />
+  </ItemGroup>
+  <Target Name="ValidateGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(RimWorldDir)/Assembly-CSharp.dll')" Text="Set RimWorldDir to the RimWorld 1.7 installation directory." />
+    <Error Condition="!Exists('$(HarmonyAssemblyPath)')" Text="Set HarmonyAssemblyPath to the RimWorld 1.7 0Harmony.dll." />
+  </Target>
+  <Target Name="PublishModAssembly" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MSBuildProjectDirectory)/../../1.7/Assemblies" />
+  </Target>
+</Project>

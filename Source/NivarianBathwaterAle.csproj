@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>5</LangVersion>
+    <AssemblyName>NivarianBathwaterAle</AssemblyName>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <DebugType>none</DebugType>
+    <DebugSymbols>false</DebugSymbols>
+    <AutomaticallyUseReferenceAssemblyPackages>false</AutomaticallyUseReferenceAssemblyPackages>
+    <RimWorldDir Condition="'$(RimWorldDir)' == ''">E:/steam/steamapps/common/RimWorld</RimWorldDir>
+    <RimWorldManagedDir Condition="'$(RimWorldManagedDir)' == ''">$(RimWorldDir)/RimWorldWin64_Data/Managed</RimWorldManagedDir>
+    <HarmonyAssemblyPath Condition="'$(HarmonyAssemblyPath)' == ''">E:/steam/steamapps/workshop/content/294100/2009463077/1.6/Assemblies/0Harmony.dll</HarmonyAssemblyPath>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="Core/*.cs;Bath/*.cs" />
+    <Reference Include="Assembly-CSharp" HintPath="$(RimWorldManagedDir)/Assembly-CSharp.dll" Private="false" />
+    <Reference Include="UnityEngine.CoreModule" HintPath="$(RimWorldManagedDir)/UnityEngine.CoreModule.dll" Private="false" />
+    <Reference Include="UnityEngine.IMGUIModule" HintPath="$(RimWorldManagedDir)/UnityEngine.IMGUIModule.dll" Private="false" />
+    <Reference Include="UnityEngine.TextRenderingModule" HintPath="$(RimWorldManagedDir)/UnityEngine.TextRenderingModule.dll" Private="false" />
+    <Reference Include="0Harmony" HintPath="$(HarmonyAssemblyPath)" Private="false" />
+  </ItemGroup>
+  <Target Name="ValidateGameReferences" BeforeTargets="ResolveAssemblyReferences">
+    <Error Condition="!Exists('$(RimWorldManagedDir)/Assembly-CSharp.dll')" Text="Set RimWorldManagedDir to RimWorld 1.6 Managed or matching reference assemblies." />
+    <Error Condition="!Exists('$(HarmonyAssemblyPath)')" Text="Set HarmonyAssemblyPath to the RimWorld 1.6 0Harmony.dll." />
+  </Target>
+  <Target Name="PublishModAssembly" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(MSBuildProjectDirectory)/../1.6/Assemblies" />
+  </Target>
+</Project>
